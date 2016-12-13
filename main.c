@@ -1,22 +1,19 @@
 #include "header.h"
 
-int main()
+int main(int ac, char *av[])
 {
-	char *buffer;
-	size_t bufsize = 80;
-	size_t characters;
+	pid_t child = fork();
 
-	buffer = malloc(bufsize * sizeof(char));
-	if (!buffer)
+	if (child < 0)
+		perror("something went wrong with forking\n");
+	if (child > 0)
 	{
-		perror("unable to allocate buffer");
-		exit(1);
+		wait(0);
+		printf("hey im the parent(%d)\n", getpid());
 	}
-
-	printf("$>> ");
-	characters = getline(&buffer, &bufsize, stdin);
-	printf("%zu characters were read.\n", characters);
-	printf("you typed: %s\n", buffer);
-
-	return (0);
+	else
+	{
+		printf("im the child(%d)\n", getpid());
+		execl("/bin/echo", "echo", "hello", "world", NULL);
+	}
 }
