@@ -1,19 +1,42 @@
 #include "header.h"
 
-int main(int ac, char *av[])
+int main(int argc, char *argv[], char *env)
 {
-	pid_t child = fork();
+	char *buffer, *cmd;
+	size_t size = 100;
+	int i, c = 1;
+	const char delim[2] = " ";
 
-	if (child < 0)
-		perror("something went wrong with forking\n");
-	if (child > 0)
+	while (1)
 	{
-		wait(0);
-		printf("hey im the parent(%d)\n", getpid());
+		buffer = malloc(sizeof(char) * size);
+		if (buffer == NULL)
+		{
+			free(buffer);
+			exit(1);
+		}
+
+		printf("#cisfun$ ");
+		c = getline(&buffer, &size, stdin);
+
+		if (c == EOF)
+		{
+			printf("EOF\n");
+			free(buffer);
+			exit(0);
+		}
+
+		cmd = strtok(buffer, delim);
+		while (cmd != NULL)
+		{
+			int ret;
+
+			if (cmd == "ls")
+				ret = execl("/bin/ls", "ls", NULL);
+			cmd = strtok(NULL, delim);
+		}
+
+
 	}
-	else
-	{
-		printf("im the child(%d)\n", getpid());
-		execl("/bin/echo", "echo", "hello", "world", NULL);
-	}
+	return (0);
 }
