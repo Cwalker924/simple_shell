@@ -1,11 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
+#include "header.h"
 
 extern char **environ;
-
-
 
 char *_getenv(const char *name)
 {
