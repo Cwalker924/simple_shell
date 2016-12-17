@@ -5,6 +5,8 @@ int main(int argc, char *argv[], char *env)
 	char *buffer, *cmd;
 	size_t size = 100;
 	int i, c = 1;
+	pid_t input;
+
 	const char delim[2] = " ";
 
 	while (1)
@@ -35,8 +37,19 @@ int main(int argc, char *argv[], char *env)
 				ret = execl("/bin/ls", "ls", NULL);
 			cmd = strtok(NULL, delim);
 		}
-
-
+		/*adding here*/
+		input = fork();
+		if (input < 0)
+		{
+			perror("Error with fork");
+			return(1);
+		}
+		if (input == 0)
+		{
+			/*add search input here*/
+		}
+		else
+			wait(0);
 	}
 	return (0);
 }

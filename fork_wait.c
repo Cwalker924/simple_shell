@@ -13,7 +13,7 @@ int main(int ac, char *av[], char *env)
 	}
 	if (child == 0)
 	{
-		printf("child");
+		/*printf("child");*/
 		child2 = fork();
 		if (child2 < 0)
 		{
@@ -22,7 +22,7 @@ int main(int ac, char *av[], char *env)
 		}
 		if (child2 == 0)
 		{
-			printf("child2");
+			/*printf("child2");*/
 			child3 = fork();
 			if (child3 < 0)
 			{
@@ -31,7 +31,7 @@ int main(int ac, char *av[], char *env)
 			}
 			if (child3 == 0)
 			{
-				printf("child3");
+				/*printf("child3");*/
 				child4 = fork();
 				if (child4 < 0)
 				{
@@ -40,7 +40,7 @@ int main(int ac, char *av[], char *env)
 				}
 				if (child4 == 0)
 				{
-					printf("child4");
+					/*printf("child4");*/
 					child5 = fork();
 					if (child5 < 0)
 					{
@@ -49,7 +49,7 @@ int main(int ac, char *av[], char *env)
 					}
 					if (child5 == 0)
 					{
-						printf("child5");
+						/*printf("child5");*/
 						if (execve(argv[0], argv, NULL) == -1)
 						{
 							perror("Error:");
