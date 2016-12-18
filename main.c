@@ -42,10 +42,10 @@ int main(int argc, char *argv[], char *env)
 		while (tok != NULL)
 		{
 			if (tok = )
-			tok = strtok(NULL, " ");
+				tok = strtok(NULL, " ");
 		}
 
-		/*attach prompt to fork here*/
+		/*attach tok to fork here*/
 		input = fork();
 		if (input < 0)
 		{

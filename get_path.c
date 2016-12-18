@@ -5,7 +5,7 @@
 
 extern char **environ;
 
-char *_getenv(const char *name)
+char *getenv(const char *name)
 {
 	int i;
 	char *pth;
@@ -24,6 +24,6 @@ char *_getenv(const char *name)
 
 int main(void)
 {
-	printf("%s\n", _getenv("PATH"));
+	printf("%s\n", getenv("PATH"));
 	return (0);
 }

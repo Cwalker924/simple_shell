@@ -19,6 +19,10 @@ typedef struct addnode{
 #include <sys/types.h>
 #include <sys/wait.h>
 
+char *getenv(const char *name);
+char *_strcat(char *dest, char *src);
+
+
 /**
  * struct flag -flag cmd
  * @letter: flag char
