@@ -2,7 +2,7 @@
 
 int main(int argc, char *argv[], char *env)
 {
-	char *buffer, *cmd;
+	char *buffer, *cmd, *tok;
 	size_t size = 100;
 	int i, c = 1;
 	pid_t input;
@@ -37,7 +37,15 @@ int main(int argc, char *argv[], char *env)
 				ret = execl("/bin/ls", "ls", NULL);
 			cmd = strtok(NULL, delim);
 		}
-		/*adding here*/
+		/* Token buffer */
+		tok = strtok(buffer, " ");
+		while (tok != NULL)
+		{
+			if (tok = )
+			tok = strtok(NULL, " ");
+		}
+
+		/*attach prompt to fork here*/
 		input = fork();
 		if (input < 0)
 		{
@@ -47,9 +55,15 @@ int main(int argc, char *argv[], char *env)
 		if (input == 0)
 		{
 			/*add search input here*/
+			if (/*execve(argv[0], argv, NULL) == -1*/)
+			{
+				perror("Error:");
+			}
 		}
 		else
+		{
 			wait(0);
+		}
 	}
 	return (0);
 }

@@ -19,4 +19,16 @@ typedef struct addnode{
 #include <sys/types.h>
 #include <sys/wait.h>
 
+/**
+ * struct flag -flag cmd
+ * @letter: flag char
+ * @prnt: print function pointer
+ * Descriptions: contains flag letter and corresponding cmd function
+ **/
+typedef struct flag
+{
+	char cmd;
+	int (*ex_ec)(va_list *);
+} find_cmd;
+
 #endif
