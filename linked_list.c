@@ -1,12 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-
-typedef struct node{
-	char *dirdir;
-	struct node *next;
-} node;
+#include "header.h"
 
 extern char **environ;
 

@@ -1,6 +1,6 @@
 #include "header.h"
 
-int env_find(int argc, char **argv[])
+int main(int argc, char **argv[])
 {
 	int ret;
 

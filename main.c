@@ -37,6 +37,9 @@ int main(int argc, char *argv[], char *env)
 				ret = execl("/bin/ls", "ls", NULL);
 			cmd = strtok(NULL, delim);
 		}
+
+		/*fork when */
+		if (buffer){}
 		/* Token buffer */
 		tok = strtok(buffer, " ");
 		while (tok != NULL)

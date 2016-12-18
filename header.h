@@ -35,4 +35,16 @@ typedef struct flag
 	int (*ex_ec)(va_list *);
 } find_cmd;
 
+/**/
+typedef struct node{
+	char *dirdir;
+	struct node *next;
+} node;
+
+/**/
+typedef struct addnode{
+	const char *name;
+	const char *value;
+	struct addnode *next;
+} link_env;
 #endif
