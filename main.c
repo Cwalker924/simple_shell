@@ -44,7 +44,7 @@ int main(int argc, char *argv[], char *env)
 		tok = strtok(buffer, " ");
 		while (tok != NULL)
 		{
-			if (tok = )
+			if (tok = /*execve(_strcat("/bin/", tok)*/))
 				tok = strtok(NULL, " ");
 		}
 

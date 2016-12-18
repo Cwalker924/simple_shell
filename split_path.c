@@ -10,7 +10,7 @@ char *_getenv(const char *name)
 	int i;
 	char *env;
 
-	for (i = 0; environ[i] != NULL; ++i)
+	for (i = 0; environ[i] != NULL; i++)
 	{
 		env = strtok(environ[i], "=");
 		if (strcmp(env, name) == 0)
