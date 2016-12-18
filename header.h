@@ -41,10 +41,4 @@ typedef struct node{
 	struct node *next;
 } node;
 
-/**/
-typedef struct addnode{
-	const char *name;
-	const char *value;
-	struct addnode *next;
-} link_env;
 #endif
