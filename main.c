@@ -1,8 +1,8 @@
 #include "header.h"
 
-int main(int argc, char **argv, char **env)
+int main(void)
 {
-	char *buffer, *tok;
+	char *buffer, *tok, *newdir;
 	char *dir = "/bin/";
 	size_t size = 100;
 	int c = 1;
@@ -42,9 +42,9 @@ int main(int argc, char **argv, char **env)
 				tok = strtok(buffer, " ");
 				while (tok != NULL)
 				{
-					dir = _strcat(dir, tok);
-					if (fileExhist(dir) == 0)
-						execve(dir, tok, NULL);
+					newdir = _strcat(dir, tok);
+					if (fileExist(newdir) == 0)
+						execve(newdir, tok, NULL);
 					tok = strtok(NULL, " ");
 				}
 			}
