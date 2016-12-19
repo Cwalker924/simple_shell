@@ -42,7 +42,7 @@ char *bin_search(void)
 }
 
 
-
+/*
 char main(void)
 {
 	char *bin, *tok, *dir;
@@ -53,11 +53,10 @@ char main(void)
 	tok = strtok(bin, "/");
 	for(i = 0; tok != NULL; i++)
 	{
-		/*printf("%s\n", tok);*/
 		if ((strcmp(bin, tok) == 0))
 			return (tok);
-		/*printf("Ive got the bin and this is it >> %s", tok);*/
 		tok = strtok(NULL, "/");
 	}
 	return(NULL);
 }
+*/

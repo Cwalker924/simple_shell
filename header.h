@@ -7,10 +7,11 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 
 char *_getenv(const char *name);
 char *_strcat(char *dest, char *src);
-
+int fileExists(const char *file);
 
 /**
  * struct flag -flag cmd
