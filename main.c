@@ -1,5 +1,7 @@
 #include "header.h"
 
+extern char **environ;
+
 int main(int ac, char **av)
 {
 	char *buffer, *cmd, *argv[1024];
@@ -49,6 +51,10 @@ int main(int ac, char **av)
 		}
 		if (input == 0)
 		{
+			if (_strcmp(argv[0], "env") == 0)
+			{
+				execl("/usr/bin/env", "env", NULL);
+			}
 			cmd = strdup(dir);
 			cmd = _strcat(cmd, argv[0]);
 			if (fileExists(cmd) == 0)

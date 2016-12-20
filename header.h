@@ -9,6 +9,8 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
+extern char **environ;
+
 char *_getenv(const char *name);
 char *_strcat(char *dest, char *src);
 int fileExists(const char *file);
