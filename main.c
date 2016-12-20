@@ -36,11 +36,11 @@ int main(int ac, char **av)
 		}
 		i--;
 
-		if (strcmp(argv[0], "exit") == 0)
+		if (_strcmp(argv[0], "exit") == 0)
 		{
 			exit(0);
 		}
-/*attach buffer to fork here*/
+/* attach buffer to fork here */
 		input = fork();
 		if (input < 0)
 		{
