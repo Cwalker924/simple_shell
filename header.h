@@ -12,6 +12,7 @@
 char *_getenv(const char *name);
 char *_strcat(char *dest, char *src);
 int fileExists(const char *file);
+int _strcmp(char *s1, char *s2);
 
 /**
  * struct flag -flag cmd

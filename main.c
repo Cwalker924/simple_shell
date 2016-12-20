@@ -1,13 +1,14 @@
 #include "header.h"
 
-int main(void)
+int main(int ac, char **av)
 {
-	char *buffer, *tok, *newdir;
+	char *buffer, *cmd, *argv[1024];
 	char *dir = "/bin/";
 	size_t size = 100;
-	int c = 1;
+	int c = 1, i;
 	pid_t input;
 
+	ac--;
 	while (1)
 	{
 		buffer = malloc(sizeof(char) * size);
@@ -27,32 +28,49 @@ int main(void)
 			exit(0);
 		}
 
-/*attach buffer to fork here*/
-		if (buffer != NULL)
+		/* add tok and args */
+		argv[0] = strtok(buffer, " \t\n");
+		for (i = 1; argv[i - 1] != NULL; i++)
 		{
-			input = fork();
-			if (input < 0)
+			argv[i] = strtok(NULL, " \t\n");
+		}
+		i--;
+
+		if (strcmp(argv[0], "exit") == 0)
+		{
+			exit(0);
+		}
+/*attach buffer to fork here*/
+		input = fork();
+		if (input < 0)
+		{
+			perror("Error with fork");
+			exit(-1);
+		}
+		if (input == 0)
+		{
+			cmd = strdup(dir);
+			cmd = _strcat(cmd, argv[0]);
+			if (fileExists(cmd) == 0)
 			{
-				perror("Error with fork");
-				return(1);
-			}
-			if (input == 0)
-			{
-				/* Token buffer */
-				tok = strtok(buffer, " ");
-				while (tok != NULL)
+				if (execve(cmd, argv, NULL) == -1)
 				{
-					newdir = _strcat(dir, tok);
-					if (fileExist(newdir) == 0)
-						execve(newdir, tok, NULL);
-					tok = strtok(NULL, " ");
+					perror(av[0]);
 				}
 			}
 			else
 			{
-				wait(0);
+				if (execve(argv[0], argv, NULL) == -1)
+				{
+					perror(av[0]);
+				}
 			}
 		}
+		else
+		{
+			wait(0);
+		}
 	}
+	free(buffer);
 	return (0);
 }

@@ -1,0 +1,16 @@
+/* child in forking */
+if (input == 0)
+{
+	argv[0] = strtok(buffer, " \t\n");
+	for (i = 1; argv[i - 1] != NULL; i++)
+	{
+		tok = _strcat(dir, argv[i]);
+		if (fileExists(tok) == 0)
+			if (execve(tok, argv, NULL) == -1)
+			{
+				perror(av[0]);
+			}
+		argv[i] = strtok(NULL, " \t\n");
+	}
+	i--;
+}
