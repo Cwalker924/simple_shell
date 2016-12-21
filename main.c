@@ -5,7 +5,7 @@ extern char **environ;
 int main(int ac, char **av)
 {
 	char *buffer, *cmd, *argv[1024];
-	char *dir = "/bin/";
+	/*char *dir = "/bin/";*/
 	size_t size = 100;
 	int c = 1, i;
 	pid_t input;
@@ -55,8 +55,7 @@ int main(int ac, char **av)
 			{
 				execl("/usr/bin/env", "env", NULL);
 			}
-			cmd = strdup(dir);
-			cmd = _strcat(cmd, argv[0]);
+			cmd = pars_path_dir(argv[0]);
 			if (fileExists(cmd) == 0)
 			{
 				if (execve(cmd, argv, NULL) == -1)

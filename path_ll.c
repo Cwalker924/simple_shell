@@ -18,12 +18,18 @@ char *getenv(const char *name)
 	}
 	return (NULL);
 }
-
-node *path_ll(const char *name)
+/**
+ * Returns(char *)
+ * /usr/local/sbin/usr/local/bin/usr/sbin/usr/bin/sbin/bin/usr
+ * /games/usr/local/games
+ *
+ * Tok and create LinkList
+ */
+char *path_ll(char *argv)
 {
-	node *addnode, *head, *temp;
+	node *addnode, *head;
 	int i;
-	char *dir, *pass_to_dir;
+	char *dir, *pass_to_dir, *sing_dir;
 
 	pass_to_dir = getenv("PATH");
 	dir = strtok(pass_to_dir, ":");
@@ -37,15 +43,15 @@ node *path_ll(const char *name)
 		addnode->dirdir = dir;
 		addnode->next = head;
 		head = addnode;
-		dir = strtok(NULL, ":");
-//		printf("%s\n", addnode->dirdir);
-	}
-	return (*head);
-}
 
-int main(void)
-{
-//	printf("%s\n", path_ll("PATH"));
-	path_ll("PATH");
-	return (0);
+		sing_dir = _strcat(addnode->dirdir, argv[0]);
+		if (fileExists(sing_dir) == 0)
+		{
+			return(sing_dir);
+		}
+
+		dir = strtok(NULL, ":");
+		//printf("%s\n", addnode->dirdir);
+	}
+	return (NULL);
 }
