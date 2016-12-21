@@ -61,7 +61,7 @@ int main(int ac, char **av)
 				if (execve(cmd, argv, environ) == -1)
 				{
 					perror(av[0]);
-					_exit(72);
+					_exit(3);
 				}
 			}
 			else
@@ -69,7 +69,7 @@ int main(int ac, char **av)
 				if (execve(argv[0], argv, environ) == -1)
 				{
 					perror(av[0]);
-					_exit(22);
+					_exit(4);
 				}
 			}
 		}
