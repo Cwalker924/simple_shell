@@ -7,7 +7,7 @@ int main(int ac, char **av)
 	char *buffer, *cmd, *argv[1024];
 	/*char *dir = "/bin/";*/
 	size_t size = 100;
-	int c = 1, i;
+	int c = 1, i, status;
 	pid_t input;
 
 	ac--;
@@ -58,22 +58,24 @@ int main(int ac, char **av)
 			cmd = pars_path_dir(argv[0]);
 			if (fileExists(cmd) == 0)
 			{
-				if (execve(cmd, argv, NULL) == -1)
+				if (execve(cmd, argv, environ) == -1)
 				{
 					perror(av[0]);
+					_exit(72);
 				}
 			}
 			else
 			{
-				if (execve(argv[0], argv, NULL) == -1)
+				if (execve(argv[0], argv, environ) == -1)
 				{
 					perror(av[0]);
+					_exit(22);
 				}
 			}
 		}
 		else
 		{
-			wait(0);
+			wait(&status);
 		}
 	}
 	free(buffer);

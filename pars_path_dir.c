@@ -29,7 +29,7 @@ char *pars_path_dir(char *argv)
 	while (single_dir != NULL)
 	{
 		dir_dup = strdup(single_dir);
-		dup_slash = _strcat (dir_dup, "/");
+		dup_slash = _strcat(dir_dup, "/");
 		dir_cat = _strcat(dup_slash, argv);
 
 		if (fileExists(dir_cat) == 0)
